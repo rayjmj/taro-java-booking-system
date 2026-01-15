@@ -29,7 +29,7 @@ const MyBookingsPage: React.FC = () => {
     setUserInfo(info.userInfo)
     
     // 加载预约数据
-    loadBookings()
+    handleRefresh()
   }, [])
 
   const loadBookings = async () => {
