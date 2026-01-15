@@ -1,0 +1,235 @@
+.home-container {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding-bottom: 120rpx;
+
+  // 用户信息卡片
+  .user-card {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #1890ff 0%, #36cfc9 100%);
+    padding: 40rpx 32rpx;
+    color: white;
+    position: relative;
+
+    .avatar {
+      width: 120rpx;
+      height: 120rpx;
+      border-radius: 50%;
+      border: 4rpx solid rgba(255, 255, 255, 0.3);
+      margin-right: 24rpx;
+      background: white;
+    }
+
+    .user-info {
+      flex: 1;
+
+      .nickname {
+        display: block;
+        font-size: 36rpx;
+        font-weight: bold;
+        margin-bottom: 8rpx;
+        line-height: 1.4;
+      }
+
+      .phone {
+        display: block;
+        font-size: 24rpx;
+        opacity: 0.9;
+      }
+    }
+
+    .logout-btn {
+      background: rgba(255, 255, 255, 0.2);
+      border: 2rpx solid rgba(255, 255, 255, 0.4);
+      color: white;
+      font-size: 24rpx;
+      height: 56rpx;
+      line-height: 56rpx;
+      padding: 0 20rpx;
+      border-radius: 28rpx;
+      min-width: 80rpx;
+      margin-left: 16rpx;
+
+      &::after {
+        border: none;
+      }
+
+      &:active {
+        background: rgba(255, 255, 255, 0.3);
+      }
+    }
+  }
+
+  // 功能网格
+  .function-grid {
+    display: flex;
+    justify-content: space-around;
+    padding: 40rpx 32rpx;
+    flex-wrap: wrap;
+    gap: 32rpx;
+
+    .function-item {
+      background: white;
+      border-radius: 16rpx;
+      padding: 40rpx 32rpx;
+      width: 280rpx;
+      text-align: center;
+      box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      cursor: pointer;
+
+      &:active {
+        transform: translateY(-4rpx);
+        box-shadow: 0 12rpx 32rpx rgba(0, 0, 0, 0.12);
+      }
+
+      .function-icon {
+        width: 120rpx;
+        height: 120rpx;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 24rpx;
+
+        &.create {
+          background: linear-gradient(135deg, #1890ff 0%, #36cfc9 100%);
+        }
+
+        &.list {
+          background: linear-gradient(135deg, #ff7a45 0%, #ffa940 100%);
+        }
+
+        .icon-text {
+          font-size: 48rpx;
+          color: white;
+        }
+      }
+
+      .function-title {
+        display: block;
+        font-size: 32rpx;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 12rpx;
+      }
+
+      .function-desc {
+        display: block;
+        font-size: 24rpx;
+        color: #999;
+        line-height: 1.4;
+      }
+    }
+  }
+
+  // 快速操作按钮
+  .quick-actions {
+    padding: 0 32rpx;
+    margin-top: 20rpx;
+
+    .action-btn {
+      width: 100%;
+      height: 88rpx;
+      line-height: 88rpx;
+      border-radius: 44rpx;
+      font-size: 32rpx;
+      font-weight: bold;
+      border: none;
+
+      &.primary {
+        background: linear-gradient(135deg, #1890ff 0%, #36cfc9 100%);
+        color: white;
+        box-shadow: 0 8rpx 24rpx rgba(24, 144, 255, 0.3);
+
+        &::after {
+          border: none;
+        }
+
+        &:active {
+          opacity: 0.9;
+          transform: translateY(2rpx);
+        }
+      }
+    }
+  }
+
+  // 提示信息区域
+  .tips {
+    background: white;
+    border-radius: 16rpx;
+    padding: 32rpx;
+    margin: 10rpx 32rpx 0;
+    box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.05);
+
+    .tips-title {
+      display: block;
+      font-size: 32rpx;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 24rpx;
+      padding-bottom: 16rpx;
+      border-bottom: 2rpx solid #f0f0f0;
+    }
+
+    .tips-list {
+      .tip-item {
+        display: block;
+        font-size: 26rpx;
+        color: #666;
+        line-height: 1.6;
+        margin-bottom: 16rpx;
+        padding-left: 40rpx;
+        position: relative;
+
+        &:before {
+          content: '•';
+          position: absolute;
+          left: 20rpx;
+          color: #1890ff;
+          font-size: 32rpx;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  // 加载状态
+  .loading-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300rpx;
+    font-size: 28rpx;
+    color: #999;
+  }
+}
+
+// 适配深色模式（可选）
+@media (prefers-color-scheme: dark) {
+  .home-container {
+    background: #141414;
+
+    .function-item,
+    .tips {
+      background: #1f1f1f;
+    }
+
+    .function-title {
+      color: #e6e6e6 !important;
+    }
+
+    .function-desc,
+    .tip-item {
+      color: #999 !important;
+    }
+
+    .tips-title {
+      color: #e6e6e6 !important;
+    }
+  }
+}

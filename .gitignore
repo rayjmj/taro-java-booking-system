@@ -1,0 +1,32 @@
+# 前端忽略文件
+booking-system-frontend/node_modules/
+booking-system-frontend/dist/
+booking-system-frontend/.taro/
+booking-system-frontend/.DS_Store
+booking-system-frontend/*.log
+booking-system-frontend/npm-debug.log*
+booking-system-frontend/yarn-debug.log*
+booking-system-frontend/yarn-error.log*
+
+# 后端忽略文件
+booking-system-backend/.gradle/
+booking-system-backend/build/
+booking-system-backend/out/
+booking-system-backend/.idea/
+booking-system-backend/*.iml
+booking-system-backend/*.log
+booking-system-backend/gradle/wrapper/gradle-wrapper.properties
+
+# 通用忽略文件
+.DS_Store
+*.log
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
