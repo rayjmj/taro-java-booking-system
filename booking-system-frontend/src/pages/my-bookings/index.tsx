@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { View, Text, ScrollView, Button } from '@tarojs/components'
-import Taro from '@tarojs/taro'
+import Taro, { useDidShow } from '@tarojs/taro'
 import { bookingApi, storageService } from '@/services/api'
 import { checkLogin } from '@/utils/auth'
 import dayjs from 'dayjs'
@@ -20,16 +20,20 @@ const MyBookingsPage: React.FC = () => {
   const [refreshing, setRefreshing] = useState(false)
   const [userInfo, setUserInfo] = useState<any>(null)
 
-  useEffect(() => {
-    // 检查登录状态
-    if (!checkLogin()) return
+  // 1. 使用 useDidShow 代替 useEffect 监听页面显示
+  useDidShow(() => {
+    console.log('页面显示，重新加载数据')
+    loadBookings()
     
     // 获取用户信息
     const info = storageService.getUserInfo()
     setUserInfo(info.userInfo)
-    
-    // 加载预约数据
-    handleRefresh()
+  })
+
+  // 2. 保留 useEffect 用于初次加载检查
+  useEffect(() => {
+    // 检查登录状态
+    if (!checkLogin()) return
   }, [])
 
   const loadBookings = async () => {
