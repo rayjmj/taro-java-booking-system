@@ -14,6 +14,7 @@ const CreateBookingPage: React.FC = () => {
   const [timeSlot, setTimeSlot] = useState('')
   const [loading, setLoading] = useState(false)
   const [errors, setErrors] = useState<Record<string, string>>({})
+  const [submitting, setSubmitting] = useState<string | null>(null);
 
   useEffect(() => {
     // 检查登录状态
@@ -80,6 +81,18 @@ const CreateBookingPage: React.FC = () => {
     try {
       // 生成幂等性key
       const idempotentKey = `booking_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+
+      // 前端防重复：检查是否正在提交相同请求
+      if (submitting === idempotentKey) {
+        Taro.showToast({
+          title: '请不要重复提交',
+          icon: 'none'
+        });
+        return;
+      }
+
+      // 设置提交状态
+      setSubmitting(idempotentKey);
       
       await bookingApi.createBooking({
         serviceName: serviceName.trim(),
@@ -104,6 +117,8 @@ const CreateBookingPage: React.FC = () => {
       })
     } finally {
       setLoading(false)
+      // 清除提交状态（延迟清除，防止快速点击）
+      setTimeout(() => setSubmitting(null), 3000);
     }
   }
 
